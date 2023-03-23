@@ -3,8 +3,8 @@ package ru.markush.lessonThree.counter;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Counter {
-    private int count = 0;
+public class Counter implements Runnable{
+    private volatile int count = 0;
     private Lock lock = new ReentrantLock();
     public void increment() {
         lock.lock();
@@ -28,6 +28,14 @@ public class Counter {
             return count;
         } finally {
             lock.unlock();
+        }
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 50; i++) {
+            increment();
+            System.out.println("Thread " + Thread.currentThread().getName() + " incrementing count to " + getCount());
         }
     }
 }
