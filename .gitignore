@@ -5,6 +5,10 @@
 
 .idea/*
 
+.idea/**/compiller.xml
+.idea/**/encodings.xml
+.idea/**/jpa-buddy.xml
+.idea/**/misc.xml
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
